@@ -6,83 +6,29 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * 删除链表中等于给定值 val 的所有节点。
+ *
+ * 示例:
+ *
+ * 输入: 1->2->6->3->4->5->6, val = 6
+ * 输出: 1->2->3->4->5
+ */
 class Solution {
-    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        if (headA == null || headB == null) return null;
-        ListNode ha = headA;
-        ListNode hb = headB;
-        ListNode temp = null;
-        while (ha != hb) {
-            ha = ha == null ? headB : ha.next;
-            hb = hb == null ? headA : hb.next;
+    public ListNode removeElements(ListNode head, int val) {
+        ListNode link = new ListNode(0);
+        link.next = head;
+        ListNode res = link;
+        while (link.next != null) {
+            if (link.next.val == val) {
+                link.next = link.next.next;
+            }
+            else{
+                link = link.next;
+            }
         }
-        return ha;
+        return res.next;
+
     }
 }
 
-public class Remove_Linked_List_Elements {
-    public static int[] stringToIntegerArray(String input) {
-        input = input.trim();
-        input = input.substring(1, input.length() - 1);
-        if (input.length() == 0) {
-            return new int[0];
-        }
-
-        String[] parts = input.split(",");
-        int[] output = new int[parts.length];
-        for(int index = 0; index < parts.length; index++) {
-            String part = parts[index].trim();
-            output[index] = Integer.parseInt(part);
-        }
-        return output;
-    }
-
-    public static ListNode stringToListNode(String input) {
-        // Generate array from the input
-        int[] nodeValues = stringToIntegerArray(input);
-
-        // Now convert that list into linked list
-        ListNode dummyRoot = new ListNode(0);
-        ListNode ptr = dummyRoot;
-        for(int item : nodeValues) {
-            ptr.next = new ListNode(item);
-            ptr = ptr.next;
-        }
-        return dummyRoot.next;
-    }
-
-    public static String listNodeToString(ListNode node) {
-        if (node == null) {
-            return "[]";
-        }
-
-        String result = "";
-        while (node != null) {
-            result += Integer.toString(node.val) + ", ";
-            node = node.next;
-        }
-        return "[" + result.substring(0, result.length() - 2) + "]";
-    }
-
-    public static void main(String[] args) throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
-        String line;
-        while ((line = in.readLine()) != null) {
-            int intersectVal = Integer.parseInt(line);
-            line = in.readLine();
-            ListNode listA = stringToListNode(line);
-            line = in.readLine();
-            ListNode listB = stringToListNode(line);
-            line = in.readLine();
-            int skipA = Integer.parseInt(line);
-            line = in.readLine();
-            int skipB = Integer.parseInt(line);
-
-            ListNode ret = new Solution().getIntersectionNode(listA, listB);
-
-            String out = listNodeToString(ret);
-
-            System.out.print(out);
-        }
-    }
-}
