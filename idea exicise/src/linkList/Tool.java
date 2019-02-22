@@ -1,4 +1,4 @@
-package LinkList;
+package linkList;
 
 /**
  * 链表工具类

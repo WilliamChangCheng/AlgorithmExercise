@@ -1,7 +1,7 @@
-package LinkList.swap_nodes_in_pairs;
+package linkList.swapNodesInPairs;
 
-import LinkList.ListNode;
-import LinkList.Tool;
+import linkList.ListNode;
+import linkList.Tool;
 
 
 import java.io.IOException;

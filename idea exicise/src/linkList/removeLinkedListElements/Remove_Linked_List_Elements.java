@@ -1,10 +1,6 @@
-package LinkList.Remove_Linked_List_Elements;
+package linkList.removeLinkedListElements;
 
-import LinkList.ListNode;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import linkList.ListNode;
 
 /**
  * 删除链表中等于给定值 val 的所有节点。

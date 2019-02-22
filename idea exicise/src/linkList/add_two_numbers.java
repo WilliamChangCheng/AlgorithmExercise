@@ -1,4 +1,4 @@
-package LinkList;
+package linkList;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -116,7 +116,7 @@ class MainClass {
             ListNode l2 = Tool.stringToListNode(line);
 
             ListNode ret = new Solution().addTwoNumbers(l1, l2);
-            //LinkList.ListNode ret = new LinkList.Solution().addnum(l1, l2);
+            //linkList.ListNode ret = new linkList.sortLinkList.Solution().addnum(l1, l2);
             String out = Tool.listNodeToString(ret);
 
             System.out.print(out);

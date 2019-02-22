@@ -1,4 +1,4 @@
-package LinkList.Design_Linked_List;
+package linkList.designLinkedList;
 
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -8,7 +8,7 @@ public class Design_Linked_List {
     public static void main(String[] args) throws ClassNotFoundException {
 
         //region 反编译
-        Class<?> clazz = Class.forName("LinkList.Design_Linked_List.MyLinkedList");
+        Class<?> clazz = Class.forName("linkList.designLinkedList.MyLinkedList");
         Method[] methods = clazz.getMethods();
         Map<String, Method> map = new HashMap<>();
         for (int i = 0; i < methods.length; i++) {

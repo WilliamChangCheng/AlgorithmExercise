@@ -1,4 +1,4 @@
-package LinkList.Merge_two_sorted_linkList;
+package linkList.mergeTwoSortedLinkList;
 /**
  * 将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。
  *
@@ -10,8 +10,8 @@ package LinkList.Merge_two_sorted_linkList;
  * 解决思路
  *      利用归并排序思想的合并过程，都不为null进行循环，循环结束后，哪个链表不为空，就把哪个接上
  */
-import LinkList.ListNode;
-import LinkList.Tool;
+import linkList.ListNode;
+import linkList.Tool;
 
 import java.io.BufferedReader;
 import java.io.IOException;

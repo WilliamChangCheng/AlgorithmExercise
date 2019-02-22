@@ -1,4 +1,4 @@
-package LinkList.Delete_Duplicates;
+package linkList.deleteDuplicates;
 /**
  * 给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。
  * <p>
@@ -12,8 +12,8 @@ package LinkList.Delete_Duplicates;
  * 输出: 1->2->3
  */
 
-import LinkList.ListNode;
-import LinkList.Tool;
+import linkList.ListNode;
+import linkList.Tool;
 
 import java.io.BufferedReader;
 import java.io.IOException;

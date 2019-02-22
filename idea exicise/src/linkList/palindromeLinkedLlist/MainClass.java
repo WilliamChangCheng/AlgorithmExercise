@@ -1,7 +1,7 @@
-package LinkList.Palindrome_linked_list;
+package linkList.palindromeLinkedLlist;
 
-import LinkList.ListNode;
-import LinkList.Tool;
+import linkList.ListNode;
+import linkList.Tool;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -43,10 +43,10 @@ import java.util.Stack;
 
 /**
  * Definition for singly-linked list.
- * public class LinkList.ListNode {
+ * public class linkList.ListNode {
  * int val;
- * LinkList.ListNode next;
- * LinkList.ListNode(int x) { val = x; }
+ * linkList.ListNode next;
+ * linkList.ListNode(int x) { val = x; }
  * }
  */
 
@@ -145,7 +145,7 @@ public class MainClass {
         String line;
         while ((line = in.readLine()) != null) {
             ListNode head = Tool.stringToListNode(line);
-            //LinkList.ListNode head = stringToListNode("[1,0,1]");
+            //linkList.ListNode head = stringToListNode("[1,0,1]");
 
             long startTime=System.nanoTime();   //获取开始时间
 //            boolean ret = new Solution().isPalindrome(head);
@@ -153,7 +153,7 @@ public class MainClass {
             long endTime=System.nanoTime(); //获取结束时间
             System.out.println("程序运行时间： "+(endTime - startTime)+"ns");
             String out = booleanToString(ret);
-            //LinkList.ListNode test = new Solution().reverse(head);
+            //linkList.ListNode test = new Solution().reverse(head);
             System.out.print(out);
 
 

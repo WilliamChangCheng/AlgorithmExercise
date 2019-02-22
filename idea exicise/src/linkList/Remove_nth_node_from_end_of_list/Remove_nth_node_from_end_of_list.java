@@ -1,4 +1,4 @@
-package LinkList.Remove_nth_node_from_end_of_list;
+package linkList.Remove_nth_node_from_end_of_list;
 /**
  * 给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。
  * <p>
@@ -16,13 +16,12 @@ package LinkList.Remove_nth_node_from_end_of_list;
  * 你能尝试使用一趟扫描实现吗？
  */
 
-import LinkList.ListNode;
-import LinkList.Tool;
+import linkList.ListNode;
+import linkList.Tool;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.List;
 
 class Solution {
     /**

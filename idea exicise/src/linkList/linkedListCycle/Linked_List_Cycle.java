@@ -1,9 +1,9 @@
-package LinkList.Linked_List_Cycle;
+package linkList.linkedListCycle;
 /**
  * 给定一个链表，判断链表中是否有环。
  */
 
-import LinkList.ListNode;
+import linkList.ListNode;
 
 import java.util.HashSet;
 

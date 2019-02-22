@@ -1,4 +1,4 @@
-package LinkList;
+package linkList;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -104,9 +104,9 @@ class MainClass1 {
             line = in.readLine();
             int target = Integer.parseInt(line);
 
-            //int[] ret = new LinkList.Solution1().twoSumHash1(nums, target);
+            //int[] ret = new linkList.Solution1().twoSumHash1(nums, target);
             int[] ret = new Solution1().twoSumHash2(nums, target);
-            //int[] ret = new LinkList.Solution1().twoSum(nums, target);
+            //int[] ret = new linkList.Solution1().twoSum(nums, target);
 
             String out = integerArrayToString(ret);
 
