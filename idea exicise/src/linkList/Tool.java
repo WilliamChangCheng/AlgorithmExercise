@@ -1,5 +1,8 @@
 package linkList;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 /**
  * 链表工具类
  */
@@ -63,4 +66,6 @@ public class Tool {
         }
         return "[" + result.substring(0, result.length() - 2) + "]";
     }
+
+
 }
