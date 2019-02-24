@@ -25,7 +25,7 @@ public class SortLinkList {
             ListNode head = Tool.stringToListNode(line);
             long startTime = System.nanoTime();
 
-            ListNode ret = new Solution().mergeSort(head);
+            ListNode ret = new Solution().insertSort(head);
 
             long endTime = System.nanoTime(); //获取结束时间
 
@@ -59,6 +59,7 @@ class Solution {
         return res.next;
     }
 
+    //region 归并排序
     /**
      * 归并排序
      * @param head
@@ -110,5 +111,41 @@ class Solution {
         if (left != null) res.next = left;
         if (right != null) res.next = right;
         return cur.next;
+    }
+    //endregion
+
+    /**
+     * 插入排序
+     * @param head
+     * @return
+     */
+    public ListNode insertSort(ListNode head) {
+        if (head == null || head.next == null) return head;
+        ListNode cur = new ListNode(head.val);
+        ListNode res = cur;
+        head = head.next;
+        while (head != null) {
+            while (cur != null) {
+                if (cur.val < head.val) {
+                    //插入的节点比列表尾部大, 插在队尾
+                    if (cur.next == null) {
+                       ListNode temp = new ListNode(head.val);
+                       cur.next = temp;
+                       break;
+                    }
+                    cur = cur.next;
+                } else {
+                    //遇到第一个比head大的点就是要插入的位置，插入后break
+                    ListNode temp = new ListNode(cur.val);
+                    temp.next = cur.next;
+                    cur.val = head.val;
+                    cur.next = temp;
+                    break;
+                }
+            }
+            head = head.next;
+            cur = res;
+        }
+        return res;
     }
 }
