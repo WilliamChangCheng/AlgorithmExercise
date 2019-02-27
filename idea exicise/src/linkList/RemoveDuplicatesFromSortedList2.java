@@ -1,5 +1,9 @@
 package linkList;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 /**
  * 题目
  * <p>
@@ -16,9 +20,24 @@ package linkList;
 
 public class RemoveDuplicatesFromSortedList2 {
 
-    public static void main(String[] args) {
-        ListNode line = Tool.stringToListNode("[1,1,2,3,3]");
-        ListNode res = deleteDuplicates2(line);
+    public static void main(String[] args) throws IOException {
+//        ListNode line = Tool.stringToListNode("[1,1,2,3,3]");
+//        ListNode res = deleteDuplicates2(line);
+        BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+        String line;
+        while ((line = in.readLine()) != null) {
+            ListNode head = Tool.stringToListNode(line);
+            long startTime = System.nanoTime();
+
+            ListNode ret = deleteDuplicates1(head);
+
+            long endTime = System.nanoTime(); //获取结束时间
+
+            String out = Tool.listNodeToString(ret);
+            System.out.print(out);
+            System.out.println("程序运行时间： " + (endTime - startTime) + "ns");
+
+        }
     }
 
     /**
@@ -72,7 +91,7 @@ public class RemoveDuplicatesFromSortedList2 {
      */
     public static ListNode deleteDuplicates1(ListNode head) {
         if (head == null) return null;
-        ListNode temp = new ListNode(0);
+        ListNode temp = new ListNode(head.val - 1);//防止哑节点和头节点一样
         temp.next = head;
         head = temp;
         ListNode left, right;
@@ -89,7 +108,7 @@ public class RemoveDuplicatesFromSortedList2 {
     }
 
     /**
-     * 递归法（很快）
+     * 递归法（和循环法差不多）
      * 很难理解
      *
      * @param head
