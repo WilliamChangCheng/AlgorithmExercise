@@ -16,15 +16,6 @@ package linkList;
 
 public class RemoveDuplicatesFromSortedList2 {
 
-    /**
-     * 递归法（很快）
-     * 很难理解
-     *
-     * @param head
-     * @return
-     */
-    static ListNode r;
-
     public static void main(String[] args) {
         ListNode line = Tool.stringToListNode("[1,1,2,3,3]");
         ListNode res = deleteDuplicates2(line);
@@ -97,6 +88,13 @@ public class RemoveDuplicatesFromSortedList2 {
         return head.next;
     }
 
+    /**
+     * 递归法（很快）
+     * 很难理解
+     *
+     * @param head
+     * @return
+     */
     public static ListNode deleteDuplicates2(ListNode head) {
         if (head == null) {
             return null;
@@ -105,7 +103,7 @@ public class RemoveDuplicatesFromSortedList2 {
             while (head.next != null && head.val == head.next.val) {
                 head = head.next;
             }
-            return r = deleteDuplicates2(head.next);
+            return deleteDuplicates2(head.next);
         } else {
             head.next = deleteDuplicates2(head.next);
         }
