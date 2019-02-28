@@ -1,8 +1,5 @@
 package linkList;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 /**
  * 链表工具类
  */
@@ -67,5 +64,25 @@ public class Tool {
         return "[" + result.substring(0, result.length() - 2) + "]";
     }
 
+    /**
+     * 字符串转换为带圈的链表
+     *
+     * @param line 符合规则的字符串如 ：[1,2]
+     * @param pos  表示链表尾连接到链表中的位置（索引从 0 开始）
+     * @return
+     */
+    public static ListNode makeCycle(String line, int pos) {
+        ListNode head = stringToListNode(line);
+        if (head == null || pos <= -1) return head;
+        ListNode res = head, temp = null;
+        int locat = 0;
+        while (head.next != null) {
+            if (locat == pos) temp = head;
+            locat++;
+            head = head.next;
+        }
+        head.next = temp;
+        return res;
+    }
 
 }
