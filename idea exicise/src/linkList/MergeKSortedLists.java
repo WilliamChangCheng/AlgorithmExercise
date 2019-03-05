@@ -1,5 +1,8 @@
 package linkList;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 /**
  * 合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。
  */
@@ -108,6 +111,50 @@ public class MergeKSortedLists {
         return merag2(node1, node2);
     }
 
+
+    /**
+     * 优先队列方式
+     * Time complexity : O(Nlogk) where k is the number of linked lists.
+     * The comparison cost will be reduced to O(logk) for every pop and insertion to priority queue. But finding the node with the smallest value just costs O(1) time.
+     * There are N nodes in the final linked list.
+     * <p>
+     * Space complexity :
+     * O(n) Creating a new linked list costs O(n) space.
+     * O(k) The code above present applies in-place method which cost O(1) space.
+     * And the priority queue (often implemented with heaps) costs O(k) space (it's far less than N in most situations).
+     *
+     * @param lists
+     * @return
+     */
+    public static ListNode mergeKLists3(ListNode[] lists) {
+        PriorityQueue<ListNode> p = new PriorityQueue<ListNode>(new Comparator<ListNode>() {
+            @Override
+            //o1减o2是小顶堆，反之是大顶堆
+            public int compare(ListNode o1, ListNode o2) {
+                return o1.val - o2.val;
+            }
+        });
+        ListNode head = new ListNode(0);
+        ListNode temp = head;
+        for (ListNode l : lists) {
+            if (l != null) p.add(l);
+        }
+        while (!p.isEmpty()) {
+            ListNode ele = p.poll();
+            ListNode cur = new ListNode(ele.val);
+            temp.next = cur;
+            ele = ele.next;
+            temp = temp.next;
+            if (ele != null) {
+                p.add(ele);
+            }
+        }
+        return head.next;
+    }
+
+
+
+
     public static void main(String[] args) {
         ListNode l1 = Tool.stringToListNode("[1,4,5]");
         ListNode l2 = Tool.stringToListNode("[1,3,4]");
@@ -117,7 +164,7 @@ public class MergeKSortedLists {
 //        ListNode l2 = Tool.stringToListNode("[]");
 //        ListNode l3 = Tool.stringToListNode("[-1]");
         ListNode[] line = {l1, l2, l3, l4};
-        ListNode res = mergeKLists2(line);
+        ListNode res = mergeKLists3(line);
 
     }
 }
