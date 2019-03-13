@@ -79,9 +79,13 @@ public class MaxSumOfRectangleNoLargerThanK {
      */
     public static int[] maxSumMatrix(int[][] matrix) {
         int maxSum = Integer.MIN_VALUE;
+        //子序列左列指针
         int maxLeft = 0;
+        //子序列右列指针
         int maxRight = 0;
+        //子序列行上指针
         int maxUp = 0;
+        //子序列行下指针
         int maxDown = 0;
         //左边的列
         for (int l = 0; l < matrix[0].length; l++) {
@@ -116,12 +120,14 @@ public class MaxSumOfRectangleNoLargerThanK {
     /**
      * 求一维数组不超过k的最大子序列和
      * 如果要求子序列位置，可以吧TreeSet换成TreeMap
+     * 为什么要用排序，就是为了好找，不用排序也能找到
      *
      * @param num
      * @param k
      * @return
      */
     public static int maxSumNoThanK(int[] num, int k) {
+        //如果要求子序列位置，可以吧TreeSet换成TreeMap
         TreeSet<Integer> ts = new TreeSet<>();
         ts.add(0);
         int cum = 0;
@@ -133,7 +139,6 @@ public class MaxSumOfRectangleNoLargerThanK {
             ts.add(cum);
         }
         return res;
-
     }
 
     /**
