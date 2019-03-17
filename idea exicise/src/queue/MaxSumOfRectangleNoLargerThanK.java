@@ -30,7 +30,7 @@ public class MaxSumOfRectangleNoLargerThanK {
                 res = num[i];
                 int tempIndex = first;
                 first = i;
-                if (res > k && res > preRes) {
+                if (res > preRes && preRes != Integer.MIN_VALUE) {
                     res = preRes;
                     first = tempIndex;
                 }
@@ -38,6 +38,38 @@ public class MaxSumOfRectangleNoLargerThanK {
         }
         return new int[]{res, first};
     }
+
+    public static int maxSumNoThanK1(int[] num, int k) {
+        //如果要求子序列位置，可以吧TreeSet换成TreeMap
+        int[] ts = new int[num.length + 1];
+        //存储达到至少为k的子数组长度
+        TreeSet<Integer> sortLen = new TreeSet<>();
+        int cum = 0, up = -1, down = -1;
+        int res = Integer.MIN_VALUE;
+        for (int i = 0; i < num.length; i++) {
+            cum += num[i];
+            int[] cur = celling(ts, i + 1, cum - k);
+            if (cur[1] != -1) {
+                res = Math.max(res, cum - cur[0]);
+                if (res == cum - cur[0]) {
+                    //当满足max要求且down的数据正常的就把数据存起来
+                    if (down != -1 && res >= k) {
+                        sortLen.add(down - up + 1);
+                    }
+                    up = cur[1];
+                    down = i;
+                }
+
+            }
+            ts[i + 1] = cum;
+        }
+        int re = -1;
+        if (!sortLen.isEmpty()) {
+            re = sortLen.first();
+        }
+        return re;
+    }
+
 //region 数组最大子序列和
 
     /**
@@ -171,10 +203,17 @@ public class MaxSumOfRectangleNoLargerThanK {
 
 
     public static void main(String[] args) throws NullPointerException {
+        TreeSet<Integer> ts = new TreeSet<>();
+        ts.add(0);
+        int re = ts.ceiling(48 - 140);
 //        int[] a = maxSumMatrix(new int[][] {{2,1,-3,-4,5},{0,6,3,4,1},{2,-2,-1,4,-5},{-3,3,1,0,3}});
 //        int[] b = new int[] {1,1};
-        int c = maxSumMatrix(new int[][]{{2, 2, -1}}, 0);
+        //[77,19,35,10,-14]
+        //19
+//        int c = maxSumMatrix(new int[][]{{2, 2, -1}}, 0);
 //        int d = maxSumMatrix(new int[][] {{7,7,4,-6,-10},{-7,-3,-9,-1,-7},{9,6,-3,-7,7},{-4,1,4,-3,-8},{-7,-4,-4,6,-10},{1,3,-2,3,-10},{8,-2,1,1,-8}}, 12);
+        int a = maxSumNoThanK1(new int[]{48, 99, 37, 4, -31}, 140);
+
     }
 
 }
