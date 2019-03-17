@@ -52,12 +52,13 @@ public class MaxSumOfRectangleNoLargerThanK {
             if (cur[1] != -1) {
                 res = Math.max(res, cum - cur[0]);
                 if (res == cum - cur[0]) {
-                    //当满足max要求且down的数据正常的就把数据存起来
-                    if (down != -1 && res >= k) {
-                        sortLen.add(down - up + 1);
-                    }
                     up = cur[1];
                     down = i;
+                    //当满足max要求且down的数据正常的就把数据存起来
+                    if (cum >= k) {
+                        sortLen.add(down - up + 1);
+                    }
+
                 }
 
             }
@@ -203,9 +204,9 @@ public class MaxSumOfRectangleNoLargerThanK {
 
 
     public static void main(String[] args) throws NullPointerException {
-        TreeSet<Integer> ts = new TreeSet<>();
-        ts.add(0);
-        int re = ts.ceiling(48 - 140);
+//        TreeSet<Integer> ts = new TreeSet<>();
+//        ts.add(0);
+//        int re = ts.ceiling(48 - 140);
 //        int[] a = maxSumMatrix(new int[][] {{2,1,-3,-4,5},{0,6,3,4,1},{2,-2,-1,4,-5},{-3,3,1,0,3}});
 //        int[] b = new int[] {1,1};
         //[77,19,35,10,-14]
