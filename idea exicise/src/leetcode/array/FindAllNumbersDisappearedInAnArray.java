@@ -20,6 +20,7 @@ import java.util.List;
  */
 
 public class FindAllNumbersDisappearedInAnArray {
+    //缺少数字不明确方法
     public List<Integer> findDisappearedNumbers(int[] nums) {
         List<Integer> res = new ArrayList<>();
         for (int i = 0; i < nums.length; i++) {
@@ -39,4 +40,21 @@ public class FindAllNumbersDisappearedInAnArray {
         return res;
 
     }
+    //缺少一个数字情况，利用或来求
+    public int missingNumber(int[] nums) {
+        int number = nums.length;
+        for (int i = 0; i < nums.length; i++) {
+            number ^= i ^ nums[i];
+        }
+        return number;
+    }
+
+    //因为缺少一个数，利用总数求缺少的那个数
+    public int missingNumber1(int[] nums) {
+        int expectedSum = nums.length*(nums.length + 1)/2;
+        int actualSum = 0;
+        for (int num : nums) actualSum += num;
+        return expectedSum - actualSum;
+    }
+
 }
