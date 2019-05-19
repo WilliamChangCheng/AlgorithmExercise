@@ -61,6 +61,7 @@ public class MaxAreaOfIsland {
         if (r < 0 || r > grid.length || c < 0 || c > grid[0].length || flag[r][c] || grid[r][c] == 0)
             return 0;
         flag[r][c] = true;
+        //1是当前位置
         return 1 + area(r, c - 1) + area(r + 1, c) + area(r, c + 1) + area(r - 1, c);
     }
 
