@@ -1,6 +1,14 @@
 package leetcode.array;
 
 public class CapacityToShipPackagesWithinDDays {
+
+    //region 自己想的
+    /**
+     * 自己想的，速度特别慢，用递归实现问题分解方法
+     * @param weights
+     * @param D
+     * @return
+     */
     public static int shipWithinDays(int[] weights, int D) {
         if (D == 1) {
             int max = 0;
@@ -41,7 +49,16 @@ public class CapacityToShipPackagesWithinDDays {
         return minWeight;
 
     }
+    //endregion
 
+    /**
+     * 二分查找，根据题意，结果一定落在[max(weights), sum(weights）]这个区间之间，
+     * 因为左端点对应每天一条船，右端点对应只有一条超级大船。
+     * 然后利用二分法，每一次循环模拟运货的过程，然后根据需要的天数与 输入 D 的关系来调整区间左右端点。
+     * @param weights
+     * @param D
+     * @return
+     */
     public static int shipWithinDays1(int[] weights, int D) {
 
         int sum = 0;
